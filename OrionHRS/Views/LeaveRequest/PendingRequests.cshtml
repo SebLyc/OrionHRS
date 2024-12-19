@@ -1,0 +1,24 @@
+﻿@model IEnumerable<OrionHRS.Models.LeaveRequest>
+
+<h2>Oczekujące wnioski urlopowe</h2>
+<table>
+    @foreach (var request in Model)
+    {
+        <tr>
+            <td>@request.Employee.FirstName @request.Employee.LastName</td>
+            <td>@request.LeaveType</td>
+            <td>@request.StartDate.ToShortDateString()</td>
+            <td>@request.EndDate.ToShortDateString()</td>
+            <td>
+                <form method="post" asp-action="Approve" asp-controller="LeaveRequest">
+                    <input type="hidden" name="id" value="@request.ID" />
+                    <button type="submit">Akceptuj</button>
+                </form>
+                <form method="post" asp-action="Reject" asp-controller="LeaveRequest">
+                    <input type="hidden" name="id" value="@request.ID" />
+                    <button type="submit">Odrzuć</button>
+                </form>
+            </td>
+        </tr>
+    }
+</table>

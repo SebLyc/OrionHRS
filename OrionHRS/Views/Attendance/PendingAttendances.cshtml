@@ -1,0 +1,43 @@
+﻿@model IEnumerable<OrionHRS.Models.Attendance>
+
+@{
+    ViewData["Title"] = "Oczekujące zgłoszenia obecności";
+}
+
+<h2>Oczekujące zgłoszenia obecności</h2>
+
+@if (Model.Any())
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Pracownik</th>
+                <th>Dzień</th>
+                <th>Status</th>
+                <th>Data zgłoszenia</th>
+                <th>Akcje</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var attendance in Model)
+            {
+                <tr>
+                    <td>@attendance.Employee.FirstName @attendance.Employee.LastName</td>
+                    <td>@attendance.Day.ToShortDateString()</td>
+                    <td>@attendance.Status</td>
+                    <td>@attendance.SubmissionDate.ToString("g")</td>
+                    <td>
+                        <form method="post" asp-action="AcceptAttendance" asp-controller="Attendance">
+                            <input type="hidden" name="attendanceId" value="@attendance.ID" />
+                            <button type="submit">Akceptuj</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Brak oczekujących zgłoszeń obecności.</p>
+}

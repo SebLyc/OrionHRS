@@ -1,0 +1,135 @@
+﻿@{
+    ViewData["Title"] = "Profil Pracownika";
+}
+
+<style>
+    .card-square {
+        aspect-ratio: 1 / 1;
+        max-width: 200px;
+        margin: auto;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s;
+    }
+
+        .card-square:hover {
+            transform: scale(1.05);
+        }
+
+    .card-title {
+        font-weight: bold;
+        font-size: 1.1rem;
+    }
+
+    .btn {
+        margin-top: 10px;
+    }
+
+    .header {
+        background-color: #f8f9fa;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+        .header h2 {
+            font-size: 2rem;
+            margin-bottom: 0;
+        }
+
+        .header p {
+            margin: 0;
+            font-size: 1.2rem;
+            color: #6c757d;
+        }
+</style>
+
+<div class="header">
+    <h2>Witaj, @ViewBag.EmployeeName!</h2>
+    <p>Twoje stanowisko: @ViewBag.Position</p>
+</div>
+
+<div class="container mt-5">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+        <div class="col">
+            <div class="card text-center card-square">
+                <div class="card-body">
+                    <h5 class="card-title">Wniosek Urlopowy</h5>
+                    <a asp-action="Create" asp-controller="LeaveRequest" class="btn btn-primary">Złóż wniosek</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card text-center card-square">
+                <div class="card-body">
+                    <h5 class="card-title">Moje Wnioski Urlopowe</h5>
+                    <a asp-action="MyRequests" asp-controller="LeaveRequest" class="btn btn-primary">Przeglądaj</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card text-center card-square">
+                <div class="card-body">
+                    <h5 class="card-title">Oczekujące Wnioski</h5>
+                    <a asp-action="PendingRequests" asp-controller="LeaveRequest" class="btn btn-primary">Zobacz</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card text-center card-square">
+                <div class="card-body">
+                    <h5 class="card-title">Rekrutacja Wewnętrzna</h5>
+                    <a asp-action="Index" asp-controller="JobOffer" class="btn btn-primary">Sprawdź</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card text-center card-square">
+                <div class="card-body">
+                    <h5 class="card-title">Prześlij Dokument</h5>
+                    <a asp-action="Upload" asp-controller="Document" class="btn btn-primary">Prześlij</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card text-center card-square">
+                <div class="card-body">
+                    <h5 class="card-title">Dokumenty do Zatwierdzenia</h5>
+                    <a asp-action="Pending" asp-controller="Document" class="btn btn-primary">Zobacz</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card text-center card-square">
+                <div class="card-body">
+                    <h5 class="card-title">Zgłoś Obecność</h5>
+                    <a asp-action="ReportAttendance" asp-controller="Attendance" class="btn btn-primary">Zgłoś</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card text-center card-square">
+                <div class="card-body">
+                    <h5 class="card-title">Moje Zgłoszenia Obecności</h5>
+                    <a asp-action="AttendanceList" asp-controller="Attendance" class="btn btn-primary">Przeglądaj</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card text-center card-square">
+                <div class="card-body">
+                    <h5 class="card-title">Wyloguj</h5>
+                    <a asp-action="Logout" asp-controller="Employee" class="btn btn-danger">Wyloguj</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

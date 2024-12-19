@@ -1,0 +1,14 @@
+﻿@model OrionHRS.Models.JobOffer
+
+@{
+    ViewData["Title"] = "Szczegóły oferty";
+}
+
+<h2>@Model.PositionName</h2>
+
+<p><strong>Opis stanowiska:</strong> @Model.Description</p>
+<p><strong>Wymagania:</strong> @Model.Requirements</p>
+<p><strong>Widełki płacowe:</strong> @Model.SalaryRange</p>
+<p><strong>Data publikacji:</strong> @Model.PostedDate.ToShortDateString()</p>
+
+<a asp-action="Index">Powrót do listy ofert</a>

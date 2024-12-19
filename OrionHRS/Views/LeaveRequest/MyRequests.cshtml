@@ -1,0 +1,20 @@
+﻿@model IEnumerable<OrionHRS.Models.LeaveRequest>
+
+<h2>Twoje wnioski urlopowe</h2>
+<table>
+    <tr>
+        <th>Typ urlopu</th>
+        <th>Data rozpoczęcia</th>
+        <th>Data zakończenia</th>
+        <th>Status</th>
+    </tr>
+    @foreach (var request in Model)
+    {
+        <tr>
+            <td>@request.LeaveType</td>
+            <td>@request.StartDate.ToShortDateString()</td>
+            <td>@request.EndDate.ToShortDateString()</td>
+            <td>@request.Status</td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Zgłoś Obecność";
+}
+
+<h2>Zgłoś Obecność</h2>
+
+<form method="post" asp-action="ReportAttendance" asp-controller="Attendance">
+    <label for="status">Status obecności:</label>
+    <select name="status" id="status" required>
+        <option value="On-site">Na miejscu</option>
+        <option value="Remote">Zdalnie</option>
+        <option value="Delegation">Delegacja</option>
+    </select>
+
+    <button type="submit">Zgłoś</button>
+</form>
+
+@if (TempData["Error"] != null)
+{
+    <div style="color: red;">
+        @TempData["Error"]
+    </div>
+}

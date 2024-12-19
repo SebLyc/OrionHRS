@@ -1,0 +1,33 @@
+﻿@model IEnumerable<OrionHRS.Models.Document>
+
+<h2>Dokumenty do zatwierdzenia</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Nazwa dokumentu</th>
+            <th>Status</th>
+            <th>Akcja</th>
+            <th>Pobierz</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var doc in Model)
+        {
+            <tr>
+                <td>@doc.Name</td>
+                <td>@doc.Status</td>
+                <td>
+                    <form method="post" asp-action="Approve" asp-controller="Document">
+                        <input type="hidden" name="documentId" value="@doc.ID" />
+                        <input type="hidden" name="approverId" value="@ViewContext.HttpContext.Session.GetInt32("EmployeeID")" />
+                        <button type="submit">Zatwierdź</button>
+                    </form>
+                </td>
+                <td>
+                    <a asp-action="Download" asp-controller="Document" asp-route-id="@doc.ID">Pobierz</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

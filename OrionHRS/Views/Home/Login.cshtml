@@ -1,0 +1,96 @@
+﻿@{
+    ViewData["Title"] = "Logowanie";
+}
+
+<div class="login-container">
+    <h2 class="login-title">Logowanie</h2>
+
+    <form method="post" asp-action="Login" asp-controller="Home" class="login-form">
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" class="form-control" required />
+        </div>
+        <div class="form-group">
+            <label for="password">Hasło:</label>
+            <input type="password" id="password" name="password" class="form-control" required />
+        </div>
+        <button type="submit" class="btn btn-primary btn-submit">Zaloguj</button>
+    </form>
+
+    @if (ViewBag.Error != null)
+    {
+        <div class="error-message">@ViewBag.Error</div>
+    }
+</div>
+
+<style>
+    /* Kontener formularza */
+    .login-container {
+        width: 100%;
+        max-width: 400px;
+        margin: 50px auto; /* Wyśrodkowanie */
+        padding: 20px;
+        background: #fff;
+        border-radius: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    /* Tytuł formularza */
+    .login-title {
+        font-size: 24px;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    /* Grupa formularza */
+    .form-group {
+        margin-bottom: 15px;
+        text-align: left;
+    }
+
+        .form-group label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            transition: box-shadow 0.2s ease-in-out;
+        }
+
+            .form-group input:focus {
+                outline: none;
+                box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+                border-color: #007bff;
+            }
+
+    /* Przycisk */
+    .btn-submit {
+        width: 100%;
+        padding: 10px;
+        background: #007bff;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+        .btn-submit:hover {
+            background: #0056b3;
+        }
+
+    /* Wiadomość błędu */
+    .error-message {
+        margin-top: 10px;
+        color: red;
+        font-size: 14px;
+    }
+</style>

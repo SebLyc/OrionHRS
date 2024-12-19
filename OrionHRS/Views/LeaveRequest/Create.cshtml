@@ -1,0 +1,19 @@
+﻿<form method="post">
+    <label>Typ urlopu:</label>
+    <select name="leaveType" required>
+        <option value="" disabled selected>-- Wybierz typ urlopu --</option>
+        <option value="Wypoczynkowy">Wypoczynkowy</option>
+        <option value="Na żądanie">Na żądanie</option>
+        <option value="Zdrowotny">Zdrowotny</option>
+        <option value="Okolicznościowy">Okolicznościowy</option>
+        <option value="Bezpłatny">Bezpłatny</option>
+    </select>
+
+    <label>Data rozpoczęcia:</label>
+    <input type="date" name="startDate" required />
+
+    <label>Data zakończenia:</label>
+    <input type="date" name="endDate" required />
+
+    <button type="submit">Złóż wniosek</button>
+</form>

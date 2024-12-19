@@ -1,0 +1,31 @@
+﻿@model IEnumerable<OrionHRS.Models.Attendance>
+
+@{
+    ViewData["Title"] = "Lista Obecności";
+}
+
+<h2>Twoje zgłoszenia obecności</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Dzień</th>
+            <th>Status</th>
+            <th>Status zgłoszenia</th>
+            <th>Data zgłoszenia</th>
+            <th>Data akceptacji</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var attendance in Model)
+        {
+            <tr>
+                <td>@attendance.Day.ToShortDateString()</td>
+                <td>@attendance.Status</td>
+                <td>@attendance.SubmissionStatus</td>
+                <td>@attendance.SubmissionDate</td>
+                <td>@(attendance.ApprovalDate.HasValue ? attendance.ApprovalDate.Value.ToString() : "N/A")</td>
+            </tr>
+        }
+    </tbody>
+</table>

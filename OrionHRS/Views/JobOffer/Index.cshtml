@@ -1,0 +1,31 @@
+﻿@model IEnumerable<OrionHRS.Models.JobOffer>
+
+@{
+    ViewData["Title"] = "Oferty pracy";
+}
+
+<h2>Rekrutacja Wewnętrzna</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Nazwa stanowiska</th>
+            <th>Widełki płacowe</th>
+            <th>Data publikacji</th>
+            <th>Szczegóły</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var offer in Model)
+        {
+                <tr>
+                    <td>@offer.PositionName</td>
+                    <td>@offer.SalaryRange</td>
+                    <td>@offer.PostedDate.ToShortDateString()</td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@offer.ID">Zobacz szczegóły</a>
+                    </td>
+                </tr>
+        }
+    </tbody>
+</table>
